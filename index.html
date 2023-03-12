@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <button onclick="incrementCounter()">
+            <img src="dumbbell.png" alt="Click me!" draggable="false">
+        </button>
+        <h5><span id="current_weight">1</span> pound weight</h5>
+        <h3>You have <span id="total_gains">0</span> gains. <br> Get to lifting bro!</h3>
+        <button onclick="upgradeWeight()">
+            Increase the weight! Cost is <span id="increase_cost">5</span> gains!
+        </button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
