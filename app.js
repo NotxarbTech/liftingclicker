@@ -16,7 +16,7 @@ updateAll();
 
 function updateAll() {
     weight = document.querySelector('#current_weight');
-    total = document.querySelector('#total_gains');
+    total = document.querySelector('.total_gains');
     weight_cost_display = document.querySelector('#weight_cost');
     protein_cost_display = document.querySelector('#protein_cost');
 
