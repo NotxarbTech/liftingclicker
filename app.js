@@ -1,11 +1,14 @@
 let counter = 0;
-let multiplier = 1;
+let weight_multiplier = 1;
 let weight_cost = 5;
+let protein_multiplier = 1;
+let protein_cost = 1000;
 
 if (localStorage.counter) {
     counter = Number(localStorage.counter);
-    multiplier = Number(localStorage.multiplier);
+    weight_multiplier = Number(localStorage.weight_multiplier);
     weight_cost = Number(localStorage.weight_cost);
+    protein_multiplier = Number(localStorage.protein_cost);
     protein_cost = Number(localStorage.protein_cost)
 }
 
@@ -24,25 +27,37 @@ function updateAll() {
 }
 
 function upgradeWeight() {
-    if (counter >= cost) {
-        if (multiplier === 1)
-            multiplier = 5;
+    if (counter >= weight_cost) {
+        if (weight_multiplier === 1)
+            weight_multiplier = 5;
         else
-            multiplier += 5;
-        counter -= cost;
-        cost += Math.ceil(cost*2);
+            weight_multiplier += 5;
+        counter -= weight_cost;
+        weight_cost += Math.ceil(cost*2);
+    }
+
+    updateAll();
+}
+
+function upgradeProtein() {
+    if (counter >= protein_cost) {
+        if (protein_multiplier === 1)
+            protein_multiplier = 10;
+        else
+            protein_multiplier += 10;
+        counter -= protein_cost;
+        protein_cost += Math.ceil(cost*5);
     }
 
     updateAll();
 }
 
 function incrementCounter() {
-    counter += multiplier;
+    counter += weight_multiplier*protein_multiplier;
     updateAll();
 }
 
-window.onbeforeunload = storeProgress;
-function storeProgress() {
+window.onbeforeunload = () => {
     localStorage.setItem('counter', counter);
     localStorage.setItem('multiplier', multiplier);
     localStorage.setItem('weight_cost', weight_cost);
