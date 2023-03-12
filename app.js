@@ -1,11 +1,12 @@
 let counter = 0;
 let multiplier = 1;
-let cost = 5;
+let weight_cost = 5;
 
 if (localStorage.counter) {
     counter = Number(localStorage.counter);
     multiplier = Number(localStorage.multiplier);
-    cost = Number(localStorage.cost);
+    weight_cost = Number(localStorage.weight_cost);
+    protein_cost = Number(localStorage.protein_cost)
 }
 
 updateAll();
@@ -13,9 +14,11 @@ updateAll();
 function updateAll() {
     weight = document.querySelector('#current_weight');
     total = document.querySelector('#total_gains');
-    display_cost = document.querySelector('#increase_cost');
+    weight_cost_display = document.querySelector('#weight_cost');
+    protein_cost_display = document.querySelector('#protein_cost');
 
-    display_cost.innerHTML = cost;
+    weight_cost_display.innerHTML = weight_cost;
+    protein_cost_display.innerHTML = protein_cost;
     weight.innerHTML = multiplier;
     total.innerHTML = counter;
 }
@@ -27,7 +30,7 @@ function upgradeWeight() {
         else
             multiplier += 5;
         counter -= cost;
-        cost += Math.ceil(cost*1.2)
+        cost += Math.ceil(cost*2);
     }
 
     updateAll();
@@ -42,5 +45,6 @@ window.onbeforeunload = storeProgress;
 function storeProgress() {
     localStorage.setItem('counter', counter);
     localStorage.setItem('multiplier', multiplier);
-    localStorage.setItem('cost', cost);
+    localStorage.setItem('weight_cost', weight_cost);
+    localStorage.setItem('protein_cost', protein_cost);
 }
