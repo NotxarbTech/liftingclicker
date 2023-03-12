@@ -22,7 +22,7 @@ function updateAll() {
 
     weight_cost_display.innerHTML = weight_cost;
     protein_cost_display.innerHTML = protein_cost;
-    weight.innerHTML = multiplier;
+    weight.innerHTML = weight_cost*protein_cost;
     total.innerHTML = counter;
 }
 
